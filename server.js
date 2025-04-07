@@ -40,6 +40,7 @@ app.get('/weather', async (req, res) => {
         const results = responses.map((response, i) => {
             const match = response.data.list.find(item => item.dt_txt.includes(today));
             return {
+                icon: match.weather[0].icon,
                 city: response.data.city.name,
                 temperature: match.main.temp,
                 weather: match.weather[0].main
