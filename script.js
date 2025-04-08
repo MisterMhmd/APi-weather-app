@@ -2,9 +2,9 @@ const date = new Date();
 
 
 
-fetch('http://localhost:5050/weather')
-  .then(res => res.json())
-  .then(data => {
+
+axios.get('http://localhost:5050/weather')
+  .then(response => {
     const body = document.querySelector(".body");
     const weatherDiv = document.createElement('div');
     weatherDiv.className = "text-center fs-1"
@@ -12,7 +12,7 @@ fetch('http://localhost:5050/weather')
     todays_date.textContent = date;
     weatherDiv.appendChild(todays_date);
     body.appendChild(weatherDiv);
-    data.forEach(item => {
+    response.data.forEach(item => {
       const container = document.createElement('div');
       container.className = 'container-fluid';
 
@@ -32,6 +32,7 @@ fetch('http://localhost:5050/weather')
       col2.className = 'col-6 border fs-1';
 
       const cityName = document.createElement('p');
+      cityName.className = "city_name";
       cityName.textContent = item.city;
 
       col2.appendChild(cityName);
@@ -53,3 +54,39 @@ fetch('http://localhost:5050/weather')
   .catch(error => console.error("error:", error));
 
 
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const search_bar = document.getElementById('Search-bar');
+
+
+    search_bar.addEventListener('input', (e) => {
+        e.preventDefault();
+      
+        const search_value = search_bar.value.toLowerCase();
+        const city_container = document.getElementById('cities');
+        const cities = document.querySelectorAll(".row.text-center");
+        const city_name = document.querySelectorAll(".city_name");
+      
+      
+        for (let i = 0; i< city_name.length + 1; i++) {
+          let match = cities[i].querySelectorAll('.city_name')[0];
+      
+          if (match) {
+              let city_value = match.textContent || match.innerHTML;
+              console.log("match found")  
+              if (city_value.toLowerCase().indexOf(search_value) > -1){
+                  cities[i].style.display = "";
+                  console.log("found results")
+              } else {
+                  cities[i].style.display = "none";
+                  console.log("nothing found")
+              }
+          } else {
+            console.log("match not found")
+          }
+        }
+      })
+})

@@ -10,20 +10,22 @@
     <body class="body bg-info-subtle">
         <div class="container-fluid bg-primary py-2 text-light mb-3 px-5">
             <h1> Weather in KSA </h1>
-        </div>
+        </div>  
         <div class="container-fluid py-3 mb-4 px-5">
             <h4> Search for a city </h4>
-            <input type="text" placeholder="Search text"/>
+            <div class="form-outline" data-mdb-input-init>  
+                <input type="search" id="Search-bar" class="form-control" placeholder="Dammam" aria-label="Search" />
+            </div>
         </div>
-        <!-- <div class="container-fluid">
+        <div class="container-fluid" id="cities">
             <div class="row text-center">
-                <div class="col border">
+                <!-- <div class="col border">
                     <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Weather icon">
                 </div>
-                <div class="col-6 border fs-1">
-                    <p> Jeddah </p>
+                <div class="col-6 border fs-1 pt-3">
+                    <p class="city_name"> Jeddah </p>
                 </div>
-                <div class="col border fs-1">  
+                <div class="col border fs-1 pt-3">  
                     27
                 </div>
             </div>
@@ -31,10 +33,10 @@
                 <div class="col border">
                     <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Weather icon">
                 </div>
-                <div class="col-6 border fs-1">
-                    <p> Riyadh </p>
+                <div class="col-6 border fs-1 pt-3">
+                    <p class="city_name"> Riyadh </p>
                 </div>
-                <div class="col border fs-1">  
+                <div class="col border fs-1 pt-3">  
                     27
                 </div>
             </div>
@@ -42,10 +44,10 @@
                 <div class="col border ">
                     <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Weather icon">
                 </div>
-                <div class="col-6 border fs-1">
-                    <p> Dammam </p>
+                <div class="col-6 border fs-1 pt-3">
+                    <p class="city_name"> Dammam </p>
                 </div>
-                <div class="col border fs-1">  
+                <div class="col border fs-1 pt-3">  
                     27
                 </div>
             </div>
@@ -53,10 +55,10 @@
                 <div class="col border">
                     <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Weather icon">
                 </div>
-                <div class="col-6 border fs-1">
-                    <p> Medinah </p>
+                <div class="col-6 border fs-1 pt-3">
+                    <p class="city_name"> Medinah </p>
                 </div>
-                <div class="col border fs-1">  
+                <div class="col border fs-1 pt-3">  
                     27
                 </div>
             </div>
@@ -64,16 +66,16 @@
                 <div class="col border">
                     <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Weather icon">
                 </div>
-                <div class="col-6 border fs-1">
-                    <p> Makkah </p>
+                <div class="col-6 border fs-1 pt-3">
+                    <p class="city_name"> Makkah </p>
                 </div>
-                <div class="col border fs-1">  
+                <div class="col border fs-1 pt-3">  
                     27
                 </div>
-            </div>
-        </div> -->
+            </div> -->
+        </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script src="script.js"> </script> 
 </html>
