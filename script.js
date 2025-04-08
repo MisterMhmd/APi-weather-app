@@ -3,7 +3,7 @@ const date = new Date();
 
 
 
-axios.get('http://localhost:5050/weather')
+axios.get('https://api-weather-app-ssd0.onrender.com/weather')
   .then(response => {
     const body = document.querySelector(".body");
     const weatherDiv = document.createElement('div');
