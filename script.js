@@ -29,7 +29,7 @@ axios.get('https://api-weather-app-ssd0.onrender.com/weather')
       col1.appendChild(icon);
 
       const col2 = document.createElement('div');
-      col2.className = 'col-6 border fs-1';
+      col2.className = 'col border fs-4 sm-auto';
 
       const cityName = document.createElement('p');
       cityName.className = "city_name";
