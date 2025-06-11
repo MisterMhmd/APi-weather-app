@@ -1,0 +1,133 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+
+
+.body {
+    background-color: #0a1f44;
+}
+
+.text-center {
+    color: white;
+    font-size: 50px;
+}
+
+.form-control {
+    background-color: #0a1f44;
+}
+
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    color:  #fff;
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#search-bar {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    width: 300px;
+    max-width: 100%;
+    outline: none;
+}
+
+.section {
+    margin: 50px 0 20px;
+}
+
+.section .cities {
+    display: grid;
+    grid-gap: 32px 20px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media screen and (max-width: 1000px) { 
+    .section .cities {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .section .cities {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {  
+    .section .cities {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.section .city {
+    position: relative;
+    padding: 40px 20px;
+    border-radius: 20px;
+    background:  #fff;
+    color:#53627c;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    list-style-type: none;
+}
+
+
+.section .city-name {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #1e2432;
+}
+
+.section .city-name sup {
+    padding: 0.2em 0.6em;
+    border-radius: 30px;
+    color:  #fff;
+    background: #ff8c00;
+    font-size: 0.7rem;
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+.section .city-temp {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #1e2432;
+}
+
+.section .city-temp sup {
+    font-size: 0.4em;
+    color: #53627c;
+}
+
+.section .city-icon {
+    width: 80px;
+    height: 80px;
+    margin: 10px auto;
+}
+
+.section figcaption {
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    color: #53627c;
+}
+

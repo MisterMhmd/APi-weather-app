@@ -5,50 +5,48 @@ const date = new Date();
 
 axios.get('https://api-weather-app-ssd0.onrender.com/weather')
   .then(response => {
-    const body = document.querySelector(".body");
-    const weatherDiv = document.createElement('div');
-    weatherDiv.className = "text-center fs-1"
-    const todays_date = document.createElement('p');
-    todays_date.textContent = date;
-    weatherDiv.appendChild(todays_date);
-    body.appendChild(weatherDiv);
+
+
+    const citiesDiv = document.querySelector(".cities");
     response.data.forEach(item => {
-      const container = document.createElement('div');
-      container.className = 'container-fluid';
 
-      const row = document.createElement('div');
-      row.className = 'row text-center';
+      const cityList = document.createElement('li');
+      cityList.className = "city";
 
-      const col1 = document.createElement('div');
-      col1.className = 'col border';
+      const cityName = document.createElement('h2');
+      cityName.className = "city-name";
 
-      const icon = document.createElement('img');
-      icon.src = `https://openweathermap.org/img/wn/${item.icon}@2x.png`;
-      icon.alt = 'Weather icon';
+      const city = document.createElement('span');
+      city.className = "name"
+      city.textContent = item.city;
 
-      col1.appendChild(icon);
+      cityName.appendChild(city);
 
-      const col2 = document.createElement('div');
-      col2.className = 'col border fs-4 sm-auto';
+      const temp = document.createElement('span');
+      temp.className = "city-temp"
+      temp.textContent = `${item.temperature}°C`;
 
-      const cityName = document.createElement('p');
-      cityName.className = "city_name";
-      cityName.textContent = item.city;
+      const iconDiv = document.createElement('figure');
+      const image = document.createElement('img');
+      image.className = "city-icon";
+      image.src = `https://openweathermap.org/img/wn/${item.icon}@2x.png`;
+      image.alt = 'Weather icon';
 
-      col2.appendChild(cityName);
+      const description = document.createElement('figcaption');
+      description.textContent = item.description;
 
-      const col3 = document.createElement('div');
-      col3.className = 'col border fs-1';
-      col3.textContent = item.temperature;
+      iconDiv.appendChild(image);
+      iconDiv.appendChild(description);
 
-      row.appendChild(col1);
-      row.appendChild(col2);
-      row.appendChild(col3);
 
-      container.appendChild(row);
+      cityList.appendChild(cityName);
+      cityList.appendChild(temp);
+      cityList.appendChild(image);
 
-      document.body.appendChild(container);
+      citiesDiv.appendChild(cityList);
     });
+
+
 
   })
   .catch(error => console.error("error:", error));
@@ -59,34 +57,39 @@ axios.get('https://api-weather-app-ssd0.onrender.com/weather')
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const search_bar = document.getElementById('Search-bar');
+
+  const body = document.querySelector(".time");
+  const weatherDiv = document.createElement('div');
+  weatherDiv.className = "text-center"
+  const todays_date = document.createElement('p');
+  todays_date.textContent = date;
+  weatherDiv.appendChild(todays_date);
+  body.appendChild(weatherDiv);
+
+  const search_bar = document.getElementById('Search-bar');
 
 
-    search_bar.addEventListener('input', (e) => {
-        e.preventDefault();
-      
-        const search_value = search_bar.value.toLowerCase();
-        const city_container = document.getElementById('cities');
-        const cities = document.querySelectorAll(".row.text-center");
-        const city_name = document.querySelectorAll(".city_name");
-      
-      
-        for (let i = 0; i< city_name.length + 1; i++) {
-          let match = cities[i].querySelectorAll('.city_name')[0];
-      
-          if (match) {
-              let city_value = match.textContent || match.innerHTML;
-              console.log("match found")  
-              if (city_value.toLowerCase().indexOf(search_value) > -1){
-                  cities[i].style.display = "";
-                  console.log("found results")
-              } else {
-                  cities[i].style.display = "none";
-                  console.log("nothing found")
-              }
-          } else {
-            console.log("match not found")
-          }
+  search_bar.addEventListener('input', (e) => {
+      e.preventDefault();
+    
+      const search_value = search_bar.value.toLowerCase();
+      const cities = document.querySelectorAll(".city");
+      const city_name = document.querySelectorAll(".name");
+    
+    
+      for (let i = 0; i < city_name.length + 1; i++) {
+        let match = cities[i].querySelectorAll('.name')[0];
+    
+        if (match) {
+            let city_value = match.textContent || match.innerHTML;
+            if (city_value.toLowerCase().indexOf(search_value) > -1){
+                cities[i].style.display = "";
+            } else {
+                cities[i].style.display = "none";
+            }
+        } else {
+          console.log("match not found")
         }
-      })
+      }
+    })
 })
