@@ -68,24 +68,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   search_bar.addEventListener('input', () => {
-    
-      const search_value = search_bar.value.toLowerCase();
-      const cities = document.querySelectorAll(".city");
-    
-    
-      for (let i = 0; i < cities.length; i++) {
-        let match = cities[i].querySelector('.name');
-    
-        if (match) {
-            let city_value = match.textContent || match.innerHTML;
-            if (city_value.toLowerCase().indexOf(search_value) > -1){
-                cities[i].style.display = "";
-            } else {
-                cities[i].style.display = "none";
-            }
-        } else {
-          console.log("match not found")
-        }
+    const search_value = search_bar.value.toLowerCase();
+    const cities = document.querySelectorAll(".city");
+  
+    document.querySelectorAll(".city").forEach(city => {
+      const name = city.querySelector(".name");
+      if (name.textContent.toLowerCase().includes(search_value)) {
+        city.style.display = '';
+      } else {
+        city.style.display = 'none';
       }
-    })
+    });
+  });
 })
