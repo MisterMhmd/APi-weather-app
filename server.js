@@ -13,17 +13,19 @@ let lat = [];
 let lon = [];
 let SA_cities = [];
 
-fs.readFile("./sa.json", "utf-8", (err, cities) => {
-    if (err) {
-        console.log("Error occured! " + err);
-    } else {
-        SA_cities = JSON.parse(cities);
-        SA_cities.forEach(element => {
-            lat.push(element.lat);
-            lon.push(element.lng);
-        });
-    }
-})
+
+try {
+    const cities = fs.readFileSync("./sa.json", "utf-8");
+    SA_cities = JSON.parse(cities);
+    SA_cities.forEach(element => {
+        lat.push(element.lat);
+        lon.push(element.lng);
+    });
+} catch (err) {
+    console.log(err);
+}
+
+
 
 
 app.get('/weather', async (req, res) => {
